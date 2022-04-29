@@ -33,6 +33,9 @@ ambiguous situations.
 - Support video listings with more columns
 - Use UTF-8 when reading/writing the config file
 
+### Removed
+- Dependency on certifi
+
 ### Fixed
 - Crash during authentication when the Shibboleth session is still valid
 

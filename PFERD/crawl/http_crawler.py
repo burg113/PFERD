@@ -1,11 +1,9 @@
 import asyncio
 import http.cookies
-import ssl
 from pathlib import Path, PurePath
 from typing import Any, Dict, List, Optional
 
 import aiohttp
-import certifi
 from aiohttp.client import ClientTimeout
 
 from ..auth import Authenticator
@@ -177,7 +175,6 @@ class HttpCrawler(Crawler):
         async with aiohttp.ClientSession(
                 headers={"User-Agent": f"{NAME}/{VERSION}"},
                 cookie_jar=self._cookie_jar,
-                connector=aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where())),
                 timeout=ClientTimeout(
                     # 30 minutes. No download in the history of downloads was longer than 30 minutes.
                     # This is enough to transfer a 600 MB file over a 3 Mib/s connection.
